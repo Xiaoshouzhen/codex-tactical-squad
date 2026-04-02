@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Tactical Squad"
+  short_description: "Planner executor reviewer loop for coding tasks"
+  default_prompt: "Use $codex-tactical-squad to run this coding task through planner, executor, and reviewer sub-agents."
