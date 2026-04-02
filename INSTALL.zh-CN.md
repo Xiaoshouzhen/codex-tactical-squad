@@ -4,6 +4,14 @@
 
 通过 Codex 的原生技能发现机制启用 `codex-tactical-squad`。
 
+## 一句话安装
+
+直接对 Codex 说：
+
+```text
+Fetch and follow instructions from https://raw.githubusercontent.com/Xiaoshouzhen/codex-tactical-squad/refs/heads/main/INSTALL.md
+```
+
 ## 前置条件
 
 - Git
@@ -13,7 +21,7 @@
 1. 克隆此仓库：
 
 ```bash
-git clone https://github.com/<your-name>/codex-tactical-squad.git ~/.codex/codex-tactical-squad
+git clone https://github.com/Xiaoshouzhen/codex-tactical-squad.git ~/.codex/codex-tactical-squad
 ```
 
 2. 创建技能链接。
@@ -76,4 +84,10 @@ Remove-Item "$env:USERPROFILE\.agents\skills\codex-tactical-squad" -Recurse -For
 
 ```bash
 rm -rf ~/.codex/codex-tactical-squad
+```
+
+### Windows（PowerShell，删除克隆仓库）
+
+```powershell
+Remove-Item "$env:USERPROFILE\.codex\codex-tactical-squad" -Recurse -Force
 ```

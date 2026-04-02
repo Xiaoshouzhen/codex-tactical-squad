@@ -4,7 +4,12 @@
 
 Codex Tactical Squad 是一个面向 Codex 的闭环开发技能。
 
-它的核心不是“多代理协作”，而是把三种原本容易互相污染的权力拆开：
+它部分受到 Anthropic 关于长时间应用开发 harness 设计文章的启发：
+<https://www.anthropic.com/engineering/harness-design-long-running-apps>
+
+它不是泛化的“多代理协作”。
+
+它是一个把三种原本容易互相污染的权力明确拆开的编码系统：
 
 - 决策权
 - 执行权
@@ -22,8 +27,6 @@ Codex Tactical Squad 是一个面向 Codex 的闭环开发技能。
 - 单一调度中心：所有结果都回流给 `Planner` 做下一步决策
 - 审查具备门禁属性：`Reviewer` 不是建议来源，而是通过与否的关卡
 
-它的设计哲学可以压缩成一句话：
-
 **由 `Planner` 驱动、由 `Executor` 执行、由 `Reviewer` 门禁的闭环开发系统。**
 
 ## 这个技能做什么
@@ -40,6 +43,16 @@ Codex Tactical Squad 是一个面向 Codex 的闭环开发技能。
 
 - 过早实现
 - 自我宽恕式审查
+
+## 背景
+
+如果你是从 Anthropic 那篇 harness 设计文章找到这个项目的，可以把两者这样对应理解：
+
+- planner -> 边界设定与决策权
+- executor -> 受控实现
+- reviewer -> 独立门禁
+
+Codex Tactical Squad 把那种通用 harness 思路，落成了一个可复用的 Codex skill，并补上了显式子代理启动、结构化交接和审查门禁推进。
 
 ## 它如何工作
 

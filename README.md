@@ -4,7 +4,12 @@
 
 Codex Tactical Squad is a closed-loop development skill for Codex.
 
-Its core is not "multi-agent collaboration". Its core is the separation of three powers that otherwise contaminate each other:
+It is inspired in part by Anthropic's article on harness design for long-running application development:
+<https://www.anthropic.com/engineering/harness-design-long-running-apps>
+
+This is not generic "multi-agent collaboration".
+
+It is a coding system that separates three powers that otherwise contaminate each other:
 
 - decision power
 - execution power
@@ -16,13 +21,11 @@ In this skill, that separation is expressed as:
 - `Executor`: produce changes within an approved scope
 - `Reviewer`: independently review and exercise gatekeeping power
 
-This only works if three structural constraints hold:
+It only works if three structural constraints hold:
 
 - power separation: planning, execution, and review must not collapse into one actor
 - single coordination center: all results flow back to the planner for the next decision
 - gatekeeping review: the reviewer is not a suggestion source but a pass/fail gate
-
-That is the operating philosophy:
 
 **A closed-loop development system driven by the planner, executed by the executor, and gated by the reviewer.**
 
@@ -40,6 +43,16 @@ The goal is to reduce two common failure modes:
 
 - premature implementation
 - self-forgiving review
+
+## Context
+
+If you found this project through Anthropic's harness-design article, the mapping is straightforward:
+
+- planner -> boundary-setting and decision authority
+- executor -> controlled implementation
+- reviewer -> independent gatekeeping
+
+Codex Tactical Squad turns that general harness direction into a reusable Codex skill with explicit subagent spawning, structured handoffs, and review-gated progress.
 
 ## How It Works
 

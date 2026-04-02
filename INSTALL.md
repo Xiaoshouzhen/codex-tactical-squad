@@ -4,6 +4,14 @@
 
 Enable the `codex-tactical-squad` skill in Codex via native skill discovery.
 
+## One-Line Install
+
+Tell Codex:
+
+```text
+Fetch and follow instructions from https://raw.githubusercontent.com/Xiaoshouzhen/codex-tactical-squad/refs/heads/main/INSTALL.md
+```
+
 ## Prerequisites
 
 - Git
@@ -13,7 +21,7 @@ Enable the `codex-tactical-squad` skill in Codex via native skill discovery.
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/<your-name>/codex-tactical-squad.git ~/.codex/codex-tactical-squad
+git clone https://github.com/Xiaoshouzhen/codex-tactical-squad.git ~/.codex/codex-tactical-squad
 ```
 
 2. Create the skill link.
@@ -76,4 +84,10 @@ Optionally remove the cloned repository:
 
 ```bash
 rm -rf ~/.codex/codex-tactical-squad
+```
+
+### Windows (PowerShell, remove cloned repository)
+
+```powershell
+Remove-Item "$env:USERPROFILE\.codex\codex-tactical-squad" -Recurse -Force
 ```
