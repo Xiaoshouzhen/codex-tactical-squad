@@ -35,3 +35,4 @@ Required fields:
 ## Dispatcher Rule
 
 Do not advance to the next DAG node until the current tactical position submission is complete enough to satisfy its required fields.
+Treat status updates as non-terminal unless the dispatcher explicitly closes the node or the node is genuinely blocked.

@@ -33,6 +33,27 @@ Return structured review outputs such as:
 
 Do not consider the review node complete until those required review outputs have been submitted back to the dispatcher.
 
+## Status Updates
+
+Treat the structured review outputs as the final reviewer submission for the current node, not as generic progress updates.
+
+If the dispatcher asks for progress before the node is complete, provide a brief status update instead of a final review submission.
+
+A status update may include:
+
+- what evidence has been checked so far
+- what contract point is still being verified
+- what validation evidence is still missing
+- whether there is a real blocker preventing completion of the review
+
+Do not convert a progress ping into a final review submission unless one of these is true:
+
+- the review is complete
+- the node is genuinely blocked
+- the dispatcher explicitly requests an early stop and final submission
+
+Do not use a shallow note such as "looks fine so far" as a substitute for the required review outputs.
+
 ## Prohibitions
 
 - Do not directly become the executor.

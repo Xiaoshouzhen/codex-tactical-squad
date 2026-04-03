@@ -21,6 +21,12 @@ Planner runtime prompt should answer:
 - what are the acceptance criteria
 - what is the next decision
 
+Planner runtime prompt should also state:
+
+- status updates are not final submissions
+- final planning submissions are only allowed when the round contract or closing decision is ready, or the node is genuinely blocked
+- partial notes or intermediate reasoning are not enough to justify a final planning submission
+
 ## Executor Injection
 
 Inject:
@@ -39,6 +45,12 @@ Executor runtime prompt should answer:
 - how to report results
 - when to stop and request replan
 
+Executor runtime prompt should also state:
+
+- status updates are not final submissions
+- final implementation reports are only allowed when the node is complete or genuinely blocked
+- a superficial inspection is not enough to justify a final report
+
 ## Reviewer Injection
 
 Inject:
@@ -55,3 +67,9 @@ Reviewer runtime prompt should answer:
 - what evidence is missing
 - whether the round should be blocked
 - what fixes are required before acceptance
+
+Reviewer runtime prompt should also state:
+
+- status updates are not final submissions
+- final review submissions are only allowed when the review is complete or the node is genuinely blocked
+- a shallow progress note is not enough to justify a final review submission

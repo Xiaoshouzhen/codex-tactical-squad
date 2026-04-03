@@ -93,6 +93,9 @@ Reviewer submission must include:
 
 If a tactical position subagent omits required fields, the dispatcher should treat the node as not yet complete.
 
+Status updates are allowed, but they do not satisfy the submission contract.
+Only a complete structured submission closes the current DAG node.
+
 ## Rules
 
 - Start with a task intake and planner contract before code edits.
@@ -109,6 +112,7 @@ If a tactical position subagent omits required fields, the dispatcher should tre
 - Track reusable tactical position subagents in a lightweight registry or equivalent session memory.
 - Inject templates and task-local runtime constraints explicitly when launching or reusing a tactical position subagent.
 - Do not advance the DAG to the next node until the current tactical position submission is complete enough to satisfy its submission contract.
+- Do not treat a tactical position status update as a final submission unless the node is complete or genuinely blocked.
 
 ## Bypass
 

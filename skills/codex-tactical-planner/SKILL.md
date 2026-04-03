@@ -34,6 +34,28 @@ Return structured planning outputs such as:
 
 Do not consider the planning node complete until those required planning outputs have been submitted back to the dispatcher.
 
+## Status Updates
+
+Treat the structured planning outputs as the final planner submission for the current node, not as generic progress pings.
+
+If the dispatcher asks for progress before the node is complete, provide a brief status update instead of a final planning submission.
+
+A status update may include:
+
+- what analysis has been completed
+- what ambiguity is still being resolved
+- what artifact is still being prepared
+- whether there is a real blocker
+
+Do not convert a progress ping into a final planning submission unless one of these is true:
+
+- the round contract is ready
+- the closing planner decision is ready
+- the node is genuinely blocked
+- the dispatcher explicitly requests an early stop and final submission
+
+Do not use a partial outline or vague scope note as a substitute for the required planning outputs.
+
 ## Prohibitions
 
 - Do not silently turn into the executor.
