@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Tactical Reviewer"
+  short_description: "Independent review and gatekeeping role"
+  default_prompt: "Use $codex-tactical-reviewer as the independent reviewer for this coding round."

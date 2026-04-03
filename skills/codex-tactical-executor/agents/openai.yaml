@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Tactical Executor"
+  short_description: "Controlled implementation role for tactical coding"
+  default_prompt: "Use $codex-tactical-executor as the executor for this approved coding round."

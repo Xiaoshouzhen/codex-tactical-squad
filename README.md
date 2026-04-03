@@ -2,7 +2,7 @@
 
 [中文说明](README.zh-CN.md) | [Installation](INSTALL.md) | [安装说明](INSTALL.zh-CN.md)
 
-Codex Tactical Squad is a closed-loop development skill for Codex.
+Codex Tactical Squad is a closed-loop development dispatcher skill for Codex.
 
 It is inspired in part by Anthropic's article on harness design for long-running application development:
 <https://www.anthropic.com/engineering/harness-design-long-running-apps>
@@ -15,11 +15,11 @@ It is a coding system that separates three powers that otherwise contaminate eac
 - execution power
 - veto power
 
-In this skill, that separation is expressed as:
+In this architecture, that separation is expressed as three separate tactical position skills:
 
-- `Planner`: define boundaries, decompose work, control cadence, make the final decision
-- `Executor`: produce changes within an approved scope
-- `Reviewer`: independently review and exercise gatekeeping power
+- `$codex-tactical-planner`: define boundaries, decompose work, control cadence, make the final decision
+- `$codex-tactical-executor`: produce changes within an approved scope
+- `$codex-tactical-reviewer`: independently review and exercise gatekeeping power
 
 It only works if three structural constraints hold:
 
@@ -31,7 +31,7 @@ It only works if three structural constraints hold:
 
 ## What The Skill Does
 
-`codex-tactical-squad` turns a coding task into a controlled loop:
+`codex-tactical-squad` tells the main thread when to use the three tactical position skills and turns a coding task into a controlled loop:
 
 1. task intake
 2. planner contract
@@ -52,12 +52,22 @@ If you found this project through Anthropic's harness-design article, the mappin
 - executor -> controlled implementation
 - reviewer -> independent gatekeeping
 
-Codex Tactical Squad turns that general harness direction into a reusable Codex skill with explicit subagent spawning, structured handoffs, and review-gated progress.
+Codex Tactical Squad turns that general harness direction into a reusable Codex dispatcher plus three position skills, with explicit subagent spawning, structured handoffs, and review-gated progress.
 
 ## How It Works
 
-When active, the skill requires explicit subagent launches for planner, executor, and reviewer work.
-Main-thread role-play does not count as valid triad execution.
+When active, the dispatcher requires explicit use of the separate planner, executor, and reviewer position skills.
+Main-thread role-play does not count as valid tactical-squad execution.
+The dispatcher is also the only runtime injection port: it decides which templates and task-local constraints get injected into each tactical position subagent.
+
+It does not assume that all three roles should be recreated every time.
+
+- `$codex-tactical-planner`: prefer session-level reuse
+- `$codex-tactical-executor`: prefer reuse within the same task cluster
+- `$codex-tactical-reviewer`: prefer a fresh reviewer per gate
+
+This keeps boundary and execution continuity while preserving review independence.
+In practice, the dispatcher should check for a live planner or executor first and only spawn a new one when reuse is no longer suitable.
 
 The skill uses structured artifacts for each round:
 
@@ -67,6 +77,14 @@ The skill uses structured artifacts for each round:
 - review report
 - planner decision
 - replan request
+
+Each tactical position must submit its required structured artifact before the dispatcher may advance to the next step.
+
+## Position Skills
+
+- `$codex-tactical-planner`
+- `$codex-tactical-executor`
+- `$codex-tactical-reviewer`
 
 ## Install
 
@@ -104,6 +122,9 @@ Relevant files: training/runtime.py, views/workbench_window.py
 - `references/replan_request_template.md`
 - `references/orchestrator_checklist.md`
 - `references/spawn_protocol.md`
+- `references/agent_registry_template.md`
+- `references/prompt_assembly.md`
+- `references/submission_contract.md`
 
 ## Bypass
 

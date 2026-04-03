@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Tactical Planner"
+  short_description: "Persistent planning and decision role for tactical coding"
+  default_prompt: "Use $codex-tactical-planner as the persistent planner for this coding task."
